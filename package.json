@@ -13,10 +13,11 @@
 		"node": ">=8"
 	},
 	"scripts": {
-		"test": "xo && ava"
+		"test": "xo && ava && tsd"
 	},
 	"files": [
-		"index.js"
+		"index.js",
+		"index.d.ts"
 	],
 	"keywords": [
 		"filter",
@@ -37,8 +38,10 @@
 		"proptypes"
 	],
 	"devDependencies": {
-		"ava": "^0.25.0",
-		"sinon": "^6.3.5",
-		"xo": "^0.23.0"
+		"@types/node": "^11.13.4",
+		"ava": "^1.4.1",
+		"sinon": "^7.3.1",
+		"tsd": "^0.7.2",
+		"xo": "^0.24.0"
 	}
 }
