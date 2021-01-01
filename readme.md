@@ -1,4 +1,4 @@
-# filter-console [![Build Status](https://travis-ci.com/sindresorhus/filter-console.svg?branch=master)](https://travis-ci.com/sindresorhus/filter-console)
+# filter-console
 
 > Filter out unwanted `console.log()` output
 
