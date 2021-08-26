@@ -1,7 +1,7 @@
-'use strict';
-const util = require('util');
+import process from 'node:process';
+import {format} from 'node:util';
 
-module.exports = (excludePatterns, options) => {
+export default function filterConsole(excludePatterns, options) {
 	options = {
 		console,
 		methods: [
@@ -9,9 +9,9 @@ module.exports = (excludePatterns, options) => {
 			'debug',
 			'info',
 			'warn',
-			'error'
+			'error',
 		],
-		...options
+		...options,
 	};
 
 	const {console: consoleObject, methods} = options;
@@ -39,7 +39,7 @@ module.exports = (excludePatterns, options) => {
 		const originalMethod = consoleObject[method];
 
 		consoleObject[method] = (...args) => {
-			if (check(util.format(...args))) {
+			if (check(format(...args))) {
 				return;
 			}
 
@@ -57,4 +57,4 @@ module.exports = (excludePatterns, options) => {
 			consoleObject[method] = originalMethods[index];
 		}
 	};
-};
+}

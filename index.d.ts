@@ -1,26 +1,24 @@
-declare namespace filterConsole {
-	type Console = Record<
-		'log' | 'debug' | 'info' | 'warn' | 'error',
-		(message?: unknown, ...optionalParams: unknown[]) => void
-	>;
+type ConsoleMethods = 'log' | 'debug' | 'info' | 'warn' | 'error';
 
-	interface Options {
-		/**
-		Console methods to filter.
+export type Console = Record<
+ConsoleMethods,
+(message?: unknown, ...optionalParameters: unknown[]) => void
+>;
 
-		@default ['log', 'debug', 'info', 'warn', 'error']
-		*/
-		readonly methods?: ReadonlyArray<
-			'log' | 'debug' | 'info' | 'warn' | 'error'
-		>;
+export interface Options {
+	/**
+	Console methods to filter.
 
-		/**
-		Use a custom `console` object. Can be useful for testing or mocking.
+	@default ['log', 'debug', 'info', 'warn', 'error']
+	*/
+	readonly methods?: readonly ConsoleMethods[];
 
-		@default console
-		*/
-		readonly console?: Console;
-	}
+	/**
+	Use a custom `console` object. Can be useful for testing or mocking.
+
+	@default console
+	*/
+	readonly console?: Console;
 }
 
 /**
@@ -38,7 +36,7 @@ Filter types:
 
 @example
 ```
-import filterConsole = require('filter-console');
+import filterConsole from 'filter-console';
 
 const disableFilter = filterConsole(['🐼']);
 
@@ -65,9 +63,7 @@ log();
 // 🐶
 ```
 */
-declare function filterConsole(
+export default function filterConsole(
 	excludePatterns: Array<string | RegExp | ((output: string) => boolean)>,
-	options?: filterConsole.Options
+	options?: Options
 ): () => void;
-
-export = filterConsole;

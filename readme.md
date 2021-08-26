@@ -4,18 +4,16 @@
 
 Can be useful when you don't control the output, for example, filtering out PropType warnings from a third-party React component.
 
-
 ## Install
 
 ```
 $ npm install filter-console
 ```
 
-
 ## Usage
 
 ```js
-const filterConsole = require('filter-console');
+import filterConsole from 'filter-console';
 
 const disableFilter = filterConsole(['🐼']);
 
@@ -44,16 +42,15 @@ $ node example.js
 🐶
 ```
 
-
 ## API
 
-### filterConsole(excludePatterns, [options])
+### filterConsole(excludePatterns, options?)
 
 Returns a function, which when called, disables the filter.
 
 #### excludePatterns
 
-Type: `Array<string|RegExp|Function>`
+Type: `Array<string | RegExp | Function>`
 
 Console output that matches any of the given patterns are filtered from being logged. The patterns are matched against what would be logged and not the `console` method input arguments directly. Meaning an exclude pattern of `'foo bar'` will match `console.log('foo %s', 'bar')`.
 
@@ -64,23 +61,18 @@ Filter types:
 
 #### options
 
-Type: `Object`
+Type: `object`
 
 ##### methods
 
-Type: `Array`<br>
+Type: `string[]`\
 Default: `['log', 'debug', 'info', 'warn', 'error']`
 
 Console methods to filter.
 
 ##### console
 
-Type: `Object`<br>
+Type: `object`\
 Default: `console`
 
 Use a custom `console` object. Can be useful for testing or mocking.
-
-
-## License
-
-MIT © [Sindre Sorhus](https://sindresorhus.com)

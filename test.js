@@ -1,13 +1,13 @@
 import test from 'ava';
 import sinon from 'sinon';
-import filterConsole from '.';
+import filterConsole from './index.js';
 
 const methods = [
 	'log',
 	'debug',
 	'info',
 	'warn',
-	'error'
+	'error',
 ];
 
 const getConsole = () => {
@@ -32,7 +32,7 @@ test('main', t => {
 	const disableFilter = filterConsole([
 		'2',
 		/^foo/i,
-		output => output.endsWith('corn')
+		output => output.endsWith('corn'),
 	], {console: customConsole});
 
 	customConsole.log(fixture1);
@@ -59,7 +59,7 @@ test('`methods` option`', t => {
 
 	filterConsole([fixture1], {
 		console: customConsole,
-		methods: ['warn']
+		methods: ['warn'],
 	});
 
 	customConsole.log(fixture1);
