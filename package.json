@@ -1,6 +1,6 @@
 {
 	"name": "filter-console",
-	"version": "0.1.1",
+	"version": "1.0.0",
 	"description": "Filter out unwanted `console.log()` output",
 	"license": "MIT",
 	"repository": "sindresorhus/filter-console",
